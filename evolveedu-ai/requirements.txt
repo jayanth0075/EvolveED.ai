@@ -1,0 +1,27 @@
+django
+djangorestframework
+youtube-transcript-api
+openai
+transformers
+torch
+sentencepiece
+# Core framework
+Django>=5.0,<6.0
+
+# Hugging Face + PyTorch
+transformers>=4.44.0
+torch>=2.4.0
+sentencepiece>=0.2.0
+sacremoses>=0.1.1
+
+# File and API handling
+PyPDF2>=3.0.1
+requests>=2.32.3
+python-dotenv>=1.0.1
+
+# Testing
+pytest>=8.3.2
+pytest-django>=4.9.0
+
+# Optional (real YouTube transcripts)
+youtube-transcript-api>=0.6.2
