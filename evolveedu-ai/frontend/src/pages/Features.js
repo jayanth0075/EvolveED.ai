@@ -21,7 +21,6 @@ import {
 } from 'lucide-react';
 
 const Features = () => {
-  const [activeFeature, setActiveFeature] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

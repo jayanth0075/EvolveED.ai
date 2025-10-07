@@ -1,223 +1,248 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Heart,
   Target,
-  Users,
-  Lightbulb,
-  Award,
   Globe,
   Sparkles,
   Brain,
-  TrendingUp,
-  Shield,
-  Clock,
-  Star,
-  CheckCircle,
-  Quote,
   Github,
   Linkedin,
   Mail,
-  ArrowRight
+  ArrowRight,
+  Code,
+  Zap,
+  Rocket,
+  Eye,
+  Layers
 } from 'lucide-react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeValue, setActiveValue] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
       setActiveValue(prev => (prev + 1) % 4);
-    }, 3000);
-    return () => clearInterval(interval);
+    }, 4000);
+
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const values = [
     {
-      icon: Heart,
-      title: 'Student-Centric',
-      description: 'Every decision we make prioritizes student success and learning outcomes.',
-      color: 'from-red-500 to-pink-500'
-    },
-    {
       icon: Brain,
-      title: 'AI-Powered Innovation',
-      description: 'Leveraging cutting-edge AI to personalize and optimize the learning experience.',
-      color: 'from-purple-500 to-indigo-500'
+      title: 'AI-First Innovation',
+      description: 'Pioneering the future of education through advanced artificial intelligence and machine learning.',
+      color: 'from-cyan-500 via-blue-500 to-purple-600',
+      glow: 'shadow-cyan-500/25'
     },
     {
-      icon: Globe,
-      title: 'Accessibility',
-      description: 'Making quality education accessible to learners worldwide, regardless of background.',
-      color: 'from-blue-500 to-cyan-500'
+      icon: Eye,
+      title: 'Vision-Driven',
+      description: 'Creating intelligent systems that understand and adapt to each learner\'s unique journey.',
+      color: 'from-purple-500 via-pink-500 to-red-500',
+      glow: 'shadow-purple-500/25'
     },
     {
-      icon: TrendingUp,
-      title: 'Continuous Improvement',
-      description: 'Constantly evolving our platform based on user feedback and technological advances.',
-      color: 'from-green-500 to-emerald-500'
-    }
-  ];
-
-  const stats = [
-    { number: '10,000+', label: 'Students Served', icon: Users },
-    { number: '500+', label: 'Career Paths', icon: Target },
-    { number: '95%', label: 'Success Rate', icon: Award },
-    { number: '24/7', label: 'AI Support', icon: Clock }
-  ];
-
-  const timeline = [
-    {
-      year: '2023',
-      title: 'The Vision',
-      description: 'Recognized the gap between traditional education and modern career requirements. Started developing AI-powered solutions.'
+      icon: Rocket,
+      title: 'Future-Ready',
+      description: 'Building tomorrow\'s learning platform today with cutting-edge technology and innovation.',
+      color: 'from-emerald-500 via-teal-500 to-cyan-500',
+      glow: 'shadow-emerald-500/25'
     },
     {
-      year: '2024',
-      title: 'Platform Development',
-      description: 'Built the core AI algorithms for personalized learning and skill gap analysis using React and Django.'
-    },
-    {
-      year: '2024',
-      title: 'Beta Launch',
-      description: 'Launched beta version with 1,000 students. Achieved 95% satisfaction rate and refined the platform.'
-    },
-    {
-      year: 'Present',
-      title: 'Scaling Impact',
-      description: 'Serving 10,000+ students globally with continuous platform improvements and new feature releases.'
+      icon: Layers,
+      title: 'Excellence',
+      description: 'Committed to delivering exceptional user experiences through thoughtful design and robust engineering.',
+      color: 'from-orange-500 via-yellow-500 to-red-500',
+      glow: 'shadow-orange-500/25'
     }
   ];
 
   const team = [
     {
-      name: 'Dr. Sarah Chen',
-      role: 'CEO & Co-founder',
-      bio: 'Former Google AI researcher with 10+ years in educational technology.',
-      image: '👩‍💼'
+      name: 'A. Jayanth',
+      role: 'Lead Developer & Co-founder',
+      expertise: 'Full-Stack Development, AI Integration',
+      gradient: 'from-cyan-400 to-blue-600',
+      icon: Code
     },
     {
-      name: 'Mike Rodriguez',
-      role: 'CTO & Co-founder',
-      bio: 'Full-stack engineer specializing in AI/ML systems and scalable web applications.',
-      image: '👨‍💻'
+      name: 'Divij Mazumdar',
+      role: 'AI Engineer & Co-founder',
+      expertise: 'Machine Learning, Data Science',
+      gradient: 'from-purple-400 to-pink-600',
+      icon: Brain
     },
     {
-      name: 'Dr. Priya Patel',
-      role: 'Head of AI Research',
-      bio: 'PhD in Machine Learning with expertise in natural language processing and personalization.',
-      image: '👩‍🔬'
-    },
-    {
-      name: 'Alex Kim',
-      role: 'Head of Product',
-      bio: 'Former startup founder with deep understanding of student needs and market dynamics.',
-      image: '👨‍🎓'
+      name: 'Kumbhar Kiran',
+      role: 'Product Developer & Co-founder',
+      expertise: 'Product Design, User Experience',
+      gradient: 'from-emerald-400 to-teal-600',
+      icon: Layers
     }
   ];
 
-  const testimonials = [
-    {
-      quote: "EvolvEd AI transformed my career journey. The personalized roadmap helped me land my dream job in just 6 months!",
-      author: "Jessica Wong",
-      role: "Software Engineer at Meta",
-      rating: 5
-    },
-    {
-      quote: "The skill gap analyzer was a game-changer. It showed me exactly what I was missing and how to fill those gaps efficiently.",
-      author: "Carlos Martinez",
-      role: "Data Scientist at Netflix",
-      rating: 5
-    },
-    {
-      quote: "As a working parent, the AI tutor's 24/7 availability meant I could learn at my own pace. Incredible platform!",
-      author: "Aisha Johnson",
-      role: "Product Manager at Spotify",
-      rating: 5
-    }
+  const technologies = [
+    { name: 'React', icon: '⚛️', desc: 'Modern Frontend Framework' },
+    { name: 'Django', icon: '🐍', desc: 'Robust Backend Architecture' },
+    { name: 'AI/ML', icon: '🤖', desc: 'Advanced Intelligence Systems' },
+    { name: 'PostgreSQL', icon: '🐘', desc: 'Scalable Database Solution' },
+    { name: 'TensorFlow', icon: '🧠', desc: 'Deep Learning Platform' },
+    { name: 'Docker', icon: '🐳', desc: 'Containerized Deployment' }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-pulse delay-500"></div>
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+        <div
+          className="absolute w-96 h-96 rounded-full opacity-20 blur-3xl transition-all duration-1000"
+          style={{
+            background: 'linear-gradient(45deg, #06b6d4, #8b5cf6, #ec4899)',
+            left: mousePosition.x - 200,
+            top: mousePosition.y - 200,
+          }}
+        ></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-purple-600/10 to-cyan-600/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-emerald-600/10 to-blue-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
+      {/* Floating Elements */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white/20 rounded-full animate-ping"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
+            }}
+          ></div>
+        ))}
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className={`text-center transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-            <div className="inline-flex items-center bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-3 mb-8">
-              <Sparkles className="w-4 h-4 mr-2 text-purple-400" />
-              <span className="text-sm font-medium text-purple-200">Our Story & Mission</span>
+      <section className="relative z-10 pt-24 pb-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className={`text-center transform transition-all duration-1500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+            <div className="inline-flex items-center bg-gradient-to-r from-cyan-500/20 to-purple-500/20 backdrop-blur-xl border border-white/10 rounded-full px-8 py-4 mb-8 shadow-2xl">
+              <Sparkles className="w-5 h-5 mr-3 text-cyan-400 animate-pulse" />
+              <span className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                The Future of AI-Powered Education
+              </span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
-              About EvolvEd AI
+            <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-white via-cyan-200 to-purple-200 bg-clip-text text-transparent">
+                About
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                EvolvEd AI
+              </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Empowering the next generation of learners through intelligent, personalized education technology
+            <p className="text-2xl md:text-3xl text-gray-300 mb-6 max-w-5xl mx-auto leading-relaxed font-light">
+              Revolutionizing education through intelligent technology
             </p>
-          </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 mt-16">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <div key={index} className="text-center">
-                  <Icon className="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-300 text-sm md:text-base">{stat.label}</div>
-                </div>
-              );
-            })}
+            <p className="text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed">
+              Where artificial intelligence meets personalized learning to create extraordinary educational experiences
+            </p>
           </div>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Mission</h2>
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                At EvolvEd AI, we believe that every student deserves personalized guidance to achieve their career dreams.
-                Traditional education systems often fail to bridge the gap between academic learning and real-world career requirements.
+      <section className="relative z-10 py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="inline-block">
+                <h2 className="text-5xl md:text-6xl font-black mb-2">
+                  <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                    Our Mission
+                  </span>
+                </h2>
+                <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full"></div>
+              </div>
+
+              <p className="text-xl text-gray-300 leading-relaxed">
+                We envision a world where every learner has access to intelligent, personalized education that adapts to their unique needs, goals, and learning style.
               </p>
-              <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                We're revolutionizing education by leveraging artificial intelligence to create personalized learning experiences
-                that adapt to each student's unique goals, learning style, and pace. Our platform doesn't just teach - it guides,
-                analyzes, and evolves with every learner.
+
+              <p className="text-lg text-gray-400 leading-relaxed">
+                EvolvEd AI breaks down traditional barriers in education by leveraging cutting-edge artificial intelligence to create dynamic learning experiences that evolve with each student's journey.
               </p>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-gray-200">Democratize access to personalized career guidance</span>
+
+              <div className="space-y-6">
+                <div className="flex items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Precision Learning</h3>
+                    <p className="text-gray-400">AI-driven insights that identify exactly what you need to learn and when</p>
+                  </div>
                 </div>
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-gray-200">Bridge the skills gap in today's job market</span>
+
+                <div className="flex items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <Rocket className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Accelerated Growth</h3>
+                    <p className="text-gray-400">Transform your career trajectory with intelligent guidance and support</p>
+                  </div>
                 </div>
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-gray-200">Empower students to achieve their career aspirations</span>
+
+                <div className="flex items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <Globe className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Global Accessibility</h3>
+                    <p className="text-gray-400">Breaking down geographical and economic barriers to quality education</p>
+                  </div>
                 </div>
               </div>
             </div>
+
             <div className="relative">
-              <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 backdrop-blur-sm border border-white/20 rounded-3xl p-8 h-96 flex items-center justify-center">
-                <div className="text-center">
-                  <Target className="w-24 h-24 text-purple-400 mx-auto mb-6" />
-                  <h3 className="text-2xl font-bold mb-4">Guiding 10,000+ Students</h3>
-                  <p className="text-gray-300">Towards their dream careers with AI-powered precision</p>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-3xl blur-xl"></div>
+              <div className="relative bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl p-12 shadow-2xl">
+                <div className="text-center space-y-8">
+                  <div className="relative">
+                    <div className="w-24 h-24 mx-auto mb-6 relative">
+                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full animate-spin" style={{animationDuration: '3s'}}></div>
+                      <div className="absolute inset-1 bg-black rounded-full flex items-center justify-center">
+                        <Brain className="w-10 h-10 text-white" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                      AI-Powered Intelligence
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      Advanced algorithms that understand your learning patterns, preferences, and goals to create the perfect educational experience.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -226,31 +251,45 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-purple-900/50 to-blue-900/50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Core Values</h2>
+      <section className="relative z-10 py-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black mb-4">
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                Our Values
+              </span>
+            </h2>
+            <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto mb-8"></div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              The principles that guide every decision we make and every feature we build
+              The core principles that drive every decision and shape the future of intelligent education
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
             {values.map((value, index) => {
               const Icon = value.icon;
               const isActive = activeValue === index;
               return (
                 <div
                   key={index}
-                  className={`bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 transition-all duration-500 hover:scale-105 ${
-                    isActive ? 'ring-2 ring-purple-500 bg-white/20 transform scale-105' : ''
+                  className={`relative group transition-all duration-700 ${
+                    isActive ? 'transform scale-105' : ''
                   }`}
                 >
-                  <div className={`bg-gradient-to-r ${value.color} w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                    <Icon className="w-8 h-8 text-white" />
+                  <div className={`absolute inset-0 bg-gradient-to-r ${value.color} opacity-20 rounded-3xl blur-xl transition-all duration-700 ${
+                    isActive ? 'opacity-40 scale-110' : 'opacity-20'
+                  }`}></div>
+
+                  <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 h-full group-hover:bg-black/40 transition-all duration-500">
+                    <div className="text-center space-y-6">
+                      <div className={`w-16 h-16 mx-auto bg-gradient-to-r ${value.color} rounded-2xl flex items-center justify-center shadow-2xl ${value.glow} group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-8 h-8 text-white" />
+                      </div>
+
+                      <h3 className="text-2xl font-bold text-white">{value.title}</h3>
+                      <p className="text-gray-300 leading-relaxed">{value.description}</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-center">{value.title}</h3>
-                  <p className="text-gray-300 text-center">{value.description}</p>
                 </div>
               );
             })}
@@ -258,163 +297,115 @@ const About = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Journey</h2>
-            <p className="text-xl text-gray-300">
-              From vision to reality - how we're transforming education with AI
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            {timeline.map((item, index) => (
-              <div key={index} className="flex items-start group">
-                <div className="flex-shrink-0 w-24 text-right pr-8">
-                  <div className="text-2xl font-bold text-purple-400">{item.year}</div>
-                </div>
-                <div className="flex-shrink-0 w-4 h-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mt-2 relative">
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 h-20 bg-gradient-to-b from-purple-500 to-transparent"></div>
-                </div>
-                <div className="flex-1 pl-8 pb-8">
-                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 group-hover:bg-white/20 transition-all duration-300">
-                    <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                    <p className="text-gray-300">{item.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Team Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-slate-900/50 to-purple-900/50">
+      <section className="relative z-10 py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Meet Our Team</h2>
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-black mb-4">
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                Meet the Visionaries
+              </span>
+            </h2>
+            <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto mb-8"></div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Passionate experts in AI, education, and technology working together to revolutionize learning
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center group hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                <div className="text-6xl mb-4">{member.image}</div>
-                <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                <p className="text-purple-400 font-semibold mb-3">{member.role}</p>
-                <p className="text-gray-300 text-sm">{member.bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Student Success Stories</h2>
-            <p className="text-xl text-gray-300">
-              Real stories from students who transformed their careers with EvolvEd AI
+              The brilliant minds behind EvolvEd AI, united by a passion for transforming education through technology
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 group hover:bg-white/20 transition-all duration-300">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
+            {team.map((member, index) => {
+              const Icon = member.icon;
+              return (
+                <div key={index} className="group relative">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${member.gradient} opacity-20 rounded-3xl blur-xl group-hover:opacity-40 transition-all duration-500`}></div>
+
+                  <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center group-hover:bg-black/40 transition-all duration-500 group-hover:scale-105">
+                    <div className="space-y-6">
+                      <div className="relative">
+                        <div className={`w-20 h-20 mx-auto bg-gradient-to-r ${member.gradient} rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className="w-10 h-10 text-white" />
+                        </div>
+                      </div>
+
+                      <div>
+                        <h3 className="text-2xl font-bold text-white mb-2">{member.name}</h3>
+                        <p className={`text-lg font-semibold bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent mb-3`}>
+                          {member.role}
+                        </p>
+                        <p className="text-gray-300 text-sm leading-relaxed">{member.expertise}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <Quote className="w-8 h-8 text-purple-400 mb-4" />
-                <p className="text-gray-200 mb-6 italic">"{testimonial.quote}"</p>
-                <div>
-                  <div className="font-bold">{testimonial.author}</div>
-                  <div className="text-purple-400 text-sm">{testimonial.role}</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Technology Stack */}
-      <section className="py-20 px-4 bg-gradient-to-r from-purple-900/50 to-blue-900/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8">Built with Excellence</h2>
-          <p className="text-xl text-gray-300 mb-12">
-            Our platform leverages modern, scalable technologies to deliver exceptional performance
-          </p>
+      {/* Vision Section */}
+      <section className="relative z-10 py-24 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-3xl blur-2xl"></div>
 
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="text-5xl mb-4">⚛️</div>
-                <h3 className="text-xl font-bold mb-2">React Frontend</h3>
-                <p className="text-gray-300">Modern, responsive, and intuitive user experience</p>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl mb-4">🐍</div>
-                <h3 className="text-xl font-bold mb-2">Django Backend</h3>
-                <p className="text-gray-300">Robust, secure, and scalable server architecture</p>
-              </div>
-              <div className="text-center">
-                <div className="text-5xl mb-4">🤖</div>
-                <h3 className="text-xl font-bold mb-2">Advanced AI</h3>
-                <p className="text-gray-300">Cutting-edge machine learning and NLP algorithms</p>
+            <div className="relative bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl p-12 text-center">
+              <div className="space-y-8">
+                <div className="inline-block">
+                  <Zap className="w-16 h-16 text-cyan-400 mx-auto mb-6 animate-pulse" />
+                </div>
+
+                <h2 className="text-4xl md:text-5xl font-black">
+                  <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                    The Future is Here
+                  </span>
+                </h2>
+
+                <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                  We're not just building an educational platform – we're crafting the future of human learning.
+                  Every algorithm, every feature, every interaction is designed to unlock human potential in ways never before possible.
+                </p>
+
+                <div className="pt-8">
+                  <button className="group bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 px-10 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center mx-auto">
+                    Join the Revolution
+                    <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-sm border border-white/20 rounded-3xl p-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Join Our Mission
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Be part of the educational revolution. Start your personalized learning journey today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center justify-center">
-              Get Started Free
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </button>
-            <button className="bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 px-8 py-4 rounded-full font-semibold transition-all duration-300 flex items-center justify-center">
-              <Mail className="w-5 h-5 mr-2" />
-              Contact Us
-            </button>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-12 px-4">
+      <footer className="relative z-10 border-t border-white/10 py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-4">EvolvEd AI</h3>
-            <p className="text-gray-400 mb-6">Transforming education through artificial intelligence</p>
-            <div className="flex justify-center space-x-6">
-              <Github className="w-6 h-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-              <Linkedin className="w-6 h-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
-              <Mail className="w-6 h-6 text-gray-400 hover:text-white cursor-pointer transition-colors" />
+          <div className="text-center space-y-8">
+            <div>
+              <h3 className="text-3xl font-black mb-2">
+                <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                  EvolvEd AI
+                </span>
+              </h3>
+              <p className="text-gray-400 text-lg">Transforming education through artificial intelligence</p>
             </div>
-          </div>
 
-          <div className="border-t border-white/10 pt-8 text-center text-gray-400">
-            <p>© 2024 EvolvEd AI. All rights reserved.</p>
-            <p className="text-sm mt-2">
-              Built with React & Django | Designed with ❤️ for students worldwide
-            </p>
-            <p className="text-xs mt-4">
-              Privacy Policy | Terms of Service | Cookie Policy | Accessibility Statement
-            </p>
+            <div className="flex justify-center space-x-8">
+              <Github className="w-8 h-8 text-gray-400 hover:text-cyan-400 cursor-pointer transition-all duration-300 hover:scale-110" />
+              <Linkedin className="w-8 h-8 text-gray-400 hover:text-purple-400 cursor-pointer transition-all duration-300 hover:scale-110" />
+              <Mail className="w-8 h-8 text-gray-400 hover:text-pink-400 cursor-pointer transition-all duration-300 hover:scale-110" />
+            </div>
+
+            <div className="border-t border-white/10 pt-8 space-y-4">
+              <p className="text-gray-400">© 2024 EvolvEd AI. All rights reserved.</p>
+              <p className="text-sm text-gray-500">
+                Built with React & Django | Designed with ❤️ for the future of education
+              </p>
+              <p className="text-xs text-gray-600">
+                Privacy Policy | Terms of Service | Cookie Policy | Accessibility Statement
+              </p>
+            </div>
           </div>
         </div>
       </footer>
