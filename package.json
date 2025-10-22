@@ -1,0 +1,22 @@
+{
+  "name": "evolve-ed-ai",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "cd evolveedu-ai/frontend && npm install",
+    "start:frontend": "cd evolveedu-ai/frontend && npm start",
+    "start:backend": "cd evolveedu-ai/backend && python manage.py runserver",
+    "build:frontend": "cd evolveedu-ai/frontend && npm run build",
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "axios": "^1.12.1",
+    "concurrently": "^8.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13"
+  }
+}
