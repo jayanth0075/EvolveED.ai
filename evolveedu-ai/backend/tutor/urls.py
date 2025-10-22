@@ -1,10 +1,12 @@
-# urls.py for tutor
-from rest_framework.routers import DefaultRouter
-from tutor.views import TutorViewSet, SessionViewSet, StudyNoteViewSet
+# tutor/urls.py
+from django.urls import path
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
-router = DefaultRouter()
-router.register(r"tutors", TutorViewSet, basename="tutor")
-router.register(r"sessions", SessionViewSet, basename="session")
-router.register(r"notes", StudyNoteViewSet, basename="studynote")
+@api_view(['GET'])
+def tutor_test(request):
+    return Response({"message": "Tutor API is working"})
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('test/', tutor_test, name='tutor-test'),
+]
