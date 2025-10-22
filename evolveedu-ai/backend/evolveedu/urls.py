@@ -11,7 +11,6 @@ urlpatterns = [
     path('api/quizzes/', include('quizzes.urls')),
     path('api/roadmaps/', include('roadmaps.urls')),
     path('api/tutor/', include('tutor.urls')),
-    path('api/', include('evolveedu.urls')),
 ]
 
 if settings.DEBUG:
