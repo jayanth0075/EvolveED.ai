@@ -11,7 +11,8 @@ import {
   Target,
   Calendar,
   Award,
-  CalendarDays
+  CalendarDays,
+  LogOut
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -158,6 +159,19 @@ export default function Sidebar() {
             </div>
           </div>
         </div>
+
+        {/* Logout Button */}
+        <button
+          onClick={() => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = '/';
+          }}
+          className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition-colors duration-200"
+        >
+          <LogOut className="h-4 w-4" />
+          <span>Logout</span>
+        </button>
       </div>
     </aside>
   );

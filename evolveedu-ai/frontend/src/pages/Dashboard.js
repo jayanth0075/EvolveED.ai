@@ -48,7 +48,7 @@ export default function Dashboard(){
   ];
 
   return (
-    <main className="flex-1 p-6">
+    <div className="p-6">
       {/* Welcome Header */}
       <motion.div
         className="mb-8"
@@ -194,6 +194,6 @@ export default function Dashboard(){
           </AnimatedCard>
         </motion.div>
       </motion.div>
-    </main>
+    </div>
   );
 }

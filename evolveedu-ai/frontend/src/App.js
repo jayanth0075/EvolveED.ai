@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useLocation, Link } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, Link, Outlet } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Menu, X, LogIn, UserPlus, Home as HomeIcon, Info, Sparkles } from 'lucide-react';
 
@@ -165,14 +165,14 @@ const ProtectedRoute = ({ children }) => {
 };
 
 // Layout Component for Protected Routes
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = () => {
   return (
     <div className="flex h-screen bg-gray-50">
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Navbar />
         <main className="flex-1 overflow-auto">
-          {children}
+          <Outlet />
         </main>
       </div>
     </div>
@@ -181,34 +181,10 @@ const DashboardLayout = ({ children }) => {
 
 // Main App Component
 const App = () => {
-  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const location = useLocation();
-
-  // Define route categories
-  const publicRoutes = ['/', '/about', '/features'];
-  const authRoutes = ['/login', '/signup'];
-  const protectedRoutes = ['/dashboard', '/notes', '/roadmap', '/quiz', '/tutor', '/settings', '/profile', '/planner'];
-
-  const isPublicRoute = publicRoutes.includes(location.pathname);
-  const isAuthRoute = authRoutes.includes(location.pathname);
-  const isProtectedRoute = protectedRoutes.some(route => location.pathname.startsWith(route));
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-
-    if (token && userData) {
-      try {
-        setUser(JSON.parse(userData));
-      } catch (error) {
-        console.error('Error parsing user data:', error);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-      }
-    }
-
-    // Simulate loading time
+    // Only check loading state
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
@@ -227,7 +203,6 @@ const App = () => {
 
       localStorage.setItem('token', mockResponse.token);
       localStorage.setItem('user', JSON.stringify(mockResponse.user));
-      setUser(mockResponse.user);
 
       // Redirect to dashboard
       window.location.href = '/dashboard';
@@ -253,7 +228,6 @@ const App = () => {
 
       localStorage.setItem('token', mockResponse.token);
       localStorage.setItem('user', JSON.stringify(mockResponse.user));
-      setUser(mockResponse.user);
 
       // Redirect to dashboard
       window.location.href = '/dashboard';
@@ -264,12 +238,7 @@ const App = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    setUser(null);
-    window.location.href = '/';
-  };
+  // Token and user state management is now handled in the Sidebar component
 
   if (loading) {
     return <Loader />;
@@ -302,70 +271,17 @@ const App = () => {
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<Signup onSignup={handleSignup} />} />
 
-        {/* Protected Routes - Now using DashboardLayout */}
-        <Route path="/dashboard" element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Dashboard />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } />
-
-        <Route path="/notes" element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Notes />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } />
-
-        <Route path="/roadmap" element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Roadmap />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } />
-
-        <Route path="/quiz" element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Quiz />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } />
-
-        <Route path="/tutor" element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Tutor />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } />
-
-        <Route path="/profile" element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Profile />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } />
-
-        <Route path="/settings" element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Settings />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } />
-
-        <Route path="/planner" element={
-          <ProtectedRoute>
-            <DashboardLayout>
-              <Planner />
-            </DashboardLayout>
-          </ProtectedRoute>
-        } />
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/tutor" element={<Tutor />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/planner" element={<Planner />} />
+        </Route>
 
         {/* Redirect unknown routes to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
