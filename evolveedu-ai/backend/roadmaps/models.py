@@ -6,11 +6,13 @@ User = get_user_model()
 
 
 class SkillCategory(models.Model):
+    """Model to categorize skills and learning paths."""
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     icon = models.CharField(max_length=50, default='🎯')
 
     def __str__(self):
+        """Return the category name."""
         return self.name
 
     class Meta:
