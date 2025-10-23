@@ -50,6 +50,7 @@ class TutorSession(models.Model):
     session_summary = models.TextField(blank=True)
 
     def __str__(self):
+        """Return the tutor session information."""
         return f"{self.user.email} - {self.title} ({self.session_type})"
 
     class Meta:
@@ -57,6 +58,7 @@ class TutorSession(models.Model):
 
 
 class ChatMessage(models.Model):
+    """Model to store individual messages in tutor sessions."""
     MESSAGE_TYPES = [
         ('user', 'User Message'),
         ('tutor', 'AI Tutor Response'),
@@ -82,6 +84,7 @@ class ChatMessage(models.Model):
     needs_followup = models.BooleanField(default=False)
 
     def __str__(self):
+        """Return the chat message information."""
         return f"{self.session.title} - {self.message_type} - {self.timestamp}"
 
     class Meta:
