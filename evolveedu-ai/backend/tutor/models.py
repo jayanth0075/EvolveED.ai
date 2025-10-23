@@ -6,6 +6,7 @@ User = get_user_model()
 
 
 class TutorSession(models.Model):
+    """Model to track AI tutor sessions and interactions."""
     SESSION_TYPES = [
         ('chat', 'Chat Session'),
         ('problem_solving', 'Problem Solving'),
