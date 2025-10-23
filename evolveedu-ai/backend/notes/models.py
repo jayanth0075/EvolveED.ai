@@ -6,11 +6,13 @@ User = get_user_model()
 
 
 class NoteCategory(models.Model):
+    """Model to organize notes into categories."""
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     icon = models.CharField(max_length=50, default='📝')
 
     def __str__(self):
+        """Return the category name."""
         return self.name
 
     class Meta:
@@ -52,6 +54,7 @@ class Note(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        """Return the note title."""
         return self.title
 
     class Meta:
@@ -67,6 +70,7 @@ class NoteShare(models.Model):
     is_read = models.BooleanField(default=False)
 
     def __str__(self):
+        """Return share information."""
         return f"{self.shared_by.email} shared {self.note.title} with {self.shared_with.email}"
 
 
@@ -86,4 +90,5 @@ class StudySession(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+        """Return study session information."""
         return f"{self.user.email} - {self.title}"
