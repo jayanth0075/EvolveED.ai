@@ -7,11 +7,13 @@ User = get_user_model()
 
 
 class QuizCategory(models.Model):
+    """Model to categorize quizzes by subject."""
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     icon = models.CharField(max_length=50, default='🧠')
 
     def __str__(self):
+        """Return the category name."""
         return self.name
 
     class Meta:
@@ -19,6 +21,7 @@ class QuizCategory(models.Model):
 
 
 class Quiz(models.Model):
+    """Model to store quiz information and metadata."""
     DIFFICULTY_CHOICES = [
         ('beginner', 'Beginner'),
         ('intermediate', 'Intermediate'),
