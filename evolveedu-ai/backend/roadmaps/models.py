@@ -20,6 +20,7 @@ class SkillCategory(models.Model):
 
 
 class Skill(models.Model):
+    """Model to represent individual skills in a learning roadmap."""
     DIFFICULTY_LEVELS = [
         ('beginner', 'Beginner'),
         ('intermediate', 'Intermediate'),
@@ -48,6 +49,7 @@ class Skill(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        """Return the skill name."""
         return self.name
 
     class Meta:
@@ -55,6 +57,7 @@ class Skill(models.Model):
 
 
 class CareerPath(models.Model):
+    """Model to represent career paths and learning roadmaps."""
     title = models.CharField(max_length=200)
     description = models.TextField()
     category = models.ForeignKey(SkillCategory, on_delete=models.CASCADE, related_name='career_paths')
@@ -75,6 +78,7 @@ class CareerPath(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+        """Return the career path title."""
         return self.title
 
 
