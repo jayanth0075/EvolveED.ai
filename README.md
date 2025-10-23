@@ -100,3 +100,35 @@ EvolveED.ai/
 ├── requirements.txt     # Python dependencies
 └── package.json        # Node.js dependencies
 ```
+
+## Roadmap
+- Add more AI models
+- Improve UI/UX
+- Expand quiz and roadmap features
+- Integrate more learning resources
+
+## Frontend Build
+To build the frontend, run:
+```
+npm run build
+```
+
+## Backend Run
+To run the backend, use:
+```
+python manage.py runserver
+```
+
+## API Usage Example
+```
+POST /api/notes/
+{
+  "content": "Your note text here"
+}
+```
+
+## Environment Setup
+Set environment variables in a .env file for secrets and API keys.
+
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
