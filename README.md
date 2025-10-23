@@ -1,6 +1,19 @@
-# EvolveEd.ai
+# EvolveEdu.AI
 
 A comprehensive learning platform combining AI-powered features with personalized education.
+
+## Features
+- AI-powered notes and summaries
+- Auto-generated study planner
+- Quiz and roadmap creation
+- Personalized AI tutor
+
+## Usage Tips
+- Use the planner to organize your study week
+- Generate notes from YouTube links or text
+- Create quizzes for self-assessment
+- Explore roadmaps for skill progression
+- Chat with the AI tutor for instant help
 
 ## Setup Instructions
 
