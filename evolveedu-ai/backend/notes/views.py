@@ -30,7 +30,7 @@ class NoteListView(generics.ListAPIView):
     def get_queryset(self):
         queryset = Note.objects.filter(
             Q(user=self.request.user) | Q(is_public=True)
-        )
+        ).select_related('user', 'category').prefetch_related('likes')
 
         # Filter by category
         category = self.request.query_params.get('category')
