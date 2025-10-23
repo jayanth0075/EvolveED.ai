@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.core.exceptions import ValidationError
+import logging
 from .models import Note, NoteCategory, NoteShare, StudySession
 from .serializers import (
     NoteSerializer, NoteCategorySerializer, NoteCreateSerializer, NoteShareSerializer,
@@ -11,6 +13,8 @@ from .serializers import (
     PDFNoteRequestSerializer
 )
 from .ai_service import NotesAIService
+
+logger = logging.getLogger(__name__)
 
 
 class NoteCategoryListView(generics.ListCreateAPIView):
@@ -75,6 +79,7 @@ class NoteDetailView(generics.RetrieveUpdateDestroyAPIView):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticated])
 def generate_notes_from_youtube(request):
+    """Generate notes from YouTube video URL with comprehensive error handling."""
     serializer = YouTubeNoteRequestSerializer(data=request.data)
     if serializer.is_valid():
         try:
@@ -83,6 +88,8 @@ def generate_notes_from_youtube(request):
             category_id = serializer.validated_data.get('category_id')
             tags = serializer.validated_data.get('tags', [])
             is_public = serializer.validated_data.get('is_public', False)
+
+            logger.info(f"Processing YouTube URL: {url}")
 
             # Generate notes using AI
             ai_result = NotesAIService.process_youtube_url(url, title)
@@ -112,10 +119,15 @@ def generate_notes_from_youtube(request):
             request.user.total_notes_generated += 1
             request.user.save(update_fields=['total_notes_generated'])
 
+            logger.info(f"Note created successfully: {note.id}")
             return Response(NoteSerializer(note).data, status=status.HTTP_201_CREATED)
 
+        except ValidationError as ve:
+            logger.error(f"Validation error: {ve}")
+            return Response({'error': 'Validation failed', 'details': str(ve)}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            logger.error(f"Error generating YouTube notes: {str(e)}")
+            return Response({'error': 'Failed to generate notes', 'details': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
