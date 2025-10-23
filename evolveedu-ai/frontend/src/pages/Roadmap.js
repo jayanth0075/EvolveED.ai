@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar';
 import AnimatedCard from '../components/AnimatedCard';
 import {
   Target,
@@ -92,11 +90,8 @@ const Roadmap = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <div className="flex">
-        <Sidebar />
-        <main className="flex-1 p-6">
+    <div className="h-full">
+      <main className="p-6">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-slate-800 mb-2">Learning Roadmap</h1>
@@ -264,7 +259,6 @@ const Roadmap = () => {
           </div>
         </main>
       </div>
-    </div>
   );
 };
 
