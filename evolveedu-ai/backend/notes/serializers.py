@@ -53,24 +53,45 @@ class StudySessionSerializer(serializers.ModelSerializer):
 
 
 class YouTubeNoteRequestSerializer(serializers.Serializer):
-    url = serializers.URLField()
-    title = serializers.CharField(max_length=200, required=False)
-    category_id = serializers.IntegerField(required=False)
-    tags = serializers.ListField(child=serializers.CharField(), required=False, default=list)
-    is_public = serializers.BooleanField(default=False)
+    """Serializer for YouTube note generation requests with validation."""
+    url = serializers.URLField(help_text="YouTube video URL")
+    title = serializers.CharField(max_length=200, required=False, help_text="Optional custom title")
+    category_id = serializers.IntegerField(required=False, help_text="Category ID for organization")
+    tags = serializers.ListField(child=serializers.CharField(), required=False, default=list, help_text="Tags for categorization")
+    is_public = serializers.BooleanField(default=False, help_text="Make note public")
+
+    def validate_url(self, value):
+        """Validate that URL is a YouTube URL."""
+        if 'youtube.com' not in value and 'youtu.be' not in value:
+            raise serializers.ValidationError("URL must be a valid YouTube link.")
+        return value
 
 
 class TextNoteRequestSerializer(serializers.Serializer):
-    text = serializers.CharField()
-    title = serializers.CharField(max_length=200)
-    category_id = serializers.IntegerField(required=False)
-    tags = serializers.ListField(child=serializers.CharField(), required=False, default=list)
-    is_public = serializers.BooleanField(default=False)
+    """Serializer for text-based note generation with validation."""
+    text = serializers.CharField(help_text="Text content to summarize")
+    title = serializers.CharField(max_length=200, help_text="Title for the note")
+    category_id = serializers.IntegerField(required=False, help_text="Category ID")
+    tags = serializers.ListField(child=serializers.CharField(), required=False, default=list, help_text="Tags")
+    is_public = serializers.BooleanField(default=False, help_text="Public flag")
+
+    def validate_text(self, value):
+        """Validate text content is not empty."""
+        if len(value.strip()) < 10:
+            raise serializers.ValidationError("Text must be at least 10 characters long.")
+        return value
 
 
 class PDFNoteRequestSerializer(serializers.Serializer):
-    file = serializers.FileField()
-    title = serializers.CharField(max_length=200, required=False)
-    category_id = serializers.IntegerField(required=False)
-    tags = serializers.ListField(child=serializers.CharField(), required=False, default=list)
-    is_public = serializers.BooleanField(default=False)
+    """Serializer for PDF-based note generation with validation."""
+    file = serializers.FileField(help_text="PDF file to process")
+    title = serializers.CharField(max_length=200, required=False, help_text="Optional title")
+    category_id = serializers.IntegerField(required=False, help_text="Category ID")
+    tags = serializers.ListField(child=serializers.CharField(), required=False, default=list, help_text="Tags")
+    is_public = serializers.BooleanField(default=False, help_text="Public flag")
+
+    def validate_file(self, value):
+        """Validate that file is a PDF."""
+        if not value.name.endswith('.pdf'):
+            raise serializers.ValidationError("File must be a PDF document.")
+        return value
