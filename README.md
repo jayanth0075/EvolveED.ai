@@ -1,54 +1,48 @@
 # EvolveEdu.AI
 
-A comprehensive learning platform combining AI-powered features with personalized education.
+A comprehensive AI-powered learning platform combining intelligent features with personalized education.
 
-## Features
-- AI-powered notes and summaries
-- Auto-generated study planner
-- Quiz and roadmap creation
-- Personalized AI tutor
+## ✨ Key Features
+- 🤖 **AI-powered Notes & Summaries**: Generate intelligent notes from YouTube, PDFs, and text
+- 📅 **Smart Study Planner**: Auto-generated study schedules based on learning goals
+- 🎯 **Quiz System**: Create and take adaptive quizzes for skill assessment
+- 🗺️ **Career Roadmaps**: Personalized learning paths and career development guides
+- 💬 **AI Tutor**: 24/7 intelligent tutor for instant learning support
+- 📊 **Progress Tracking**: Monitor your learning journey with detailed analytics
 
-## Usage Tips
-- Use the planner to organize your study week
-- Generate notes from YouTube links or text
-- Create quizzes for self-assessment
-- Explore roadmaps for skill progression
-- Chat with the AI tutor for instant help
-
-## Setup Instructions
+## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.8 or higher
-- Node.js 14 or higher
-- npm 6 or higher
+- Python 3.8+
+- Node.js 14+
+- npm 6+
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository**:
 ```bash
 git clone https://github.com/jayanth0075/EvolveED.ai.git
 cd EvolveED.ai
 ```
 
-2. Set up Python virtual environment:
+2. **Setup Backend**:
 ```bash
-python -m venv .venv
-.venv\Scripts\activate  # Windows
-source .venv/bin/activate  # Linux/Mac
+cd evolveedu-ai/backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
 ```
 
-3. Install frontend dependencies:
+3. **Setup Frontend**:
 ```bash
+cd ../frontend
 npm install
-npm run install:all
+npm start
 ```
 
-### Running the Application
-
-#### Development Mode
-Run both frontend and backend together:
-```bash
+### Running Tests
 npm run dev
 ```
 
