@@ -1,28 +1,77 @@
-# tests.py for roadmaps
-import pytest
-from rest_framework.test import APIClient
-from django.contrib.auth.models import User
-from roadmaps.models import SkillCategory
+from django.test import TestCase
+from django.contrib.auth import get_user_model
+from .models import SkillCategory, Skill, CareerPath
+
+User = get_user_model()
 
 
-@pytest.fixture
-def api_client():
-    return APIClient()
+class SkillCategoryUnitTestCase(TestCase):
+    """Unit tests for SkillCategory model."""
+
+    def setUp(self):
+        """Set up test category."""
+        self.category = SkillCategory.objects.create(
+            name='Web Development',
+            description='Web development skills'
+        )
+
+    def test_category_creation(self):
+        """Test category creation."""
+        self.assertEqual(self.category.name, 'Web Development')
+        self.assertEqual(str(self.category), 'Web Development')
+
+    def test_category_unique_name(self):
+        """Test category name is unique."""
+        with self.assertRaises(Exception):
+            SkillCategory.objects.create(name='Web Development')
 
 
-@pytest.fixture
-def user(db):
-    return User.objects.create_user(username="tester", password="pass123")
+class SkillUnitTestCase(TestCase):
+    """Unit tests for Skill model."""
+
+    def setUp(self):
+        """Set up test skill."""
+        self.category = SkillCategory.objects.create(name='Programming')
+        self.skill = Skill.objects.create(
+            name='Python',
+            description='Python programming language',
+            category=self.category
+        )
+
+    def test_skill_creation(self):
+        """Test skill creation."""
+        self.assertEqual(self.skill.name, 'Python')
+        self.assertEqual(self.skill.category, self.category)
+
+    def test_skill_string_representation(self):
+        """Test skill string representation."""
+        self.assertEqual(str(self.skill), 'Python')
 
 
-@pytest.fixture
-def auth_client(api_client, user):
-    api_client.force_authenticate(user=user)
-    return api_client
+class CareerPathUnitTestCase(TestCase):
+    """Unit tests for CareerPath model."""
+
+    def setUp(self):
+        """Set up test career path."""
+        self.category = SkillCategory.objects.create(name='Technology')
+        self.path = CareerPath.objects.create(
+            title='Full Stack Developer',
+            description='Develop full stack applications',
+            category=self.category
+        )
+
+    def test_career_path_creation(self):
+        """Test career path creation."""
+        self.assertEqual(self.path.title, 'Full Stack Developer')
+        self.assertFalse(self.path.is_popular)
+
+    def test_career_path_string_representation(self):
+        """Test career path string representation."""
+        self.assertEqual(str(self.path), 'Full Stack Developer')
 
 
 # ------------------
-# SkillCategory Tests
+# SkillCategory API Tests
 # ------------------
 
 @pytest.mark.django_db
