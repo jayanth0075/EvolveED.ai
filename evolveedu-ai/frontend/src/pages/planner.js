@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // Planner component displays a weekly study schedule
 export default function Planner() {
   // State holds the schedule for each day
-  const [schedule, setSchedule] = useState([
+  const [schedule] = useState([
     { day: "Monday", time: "2h: Python Basics" },
     { day: "Tuesday", time: "1h: Machine Learning" },
     { day: "Wednesday", time: "1.5h: ML Project" },
