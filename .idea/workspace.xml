@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3cc7e001-6743-45ba-82d5-bcd2b7a396a5" name="Changes" comment="django files">
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/evolveedu/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/evolveedu/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/evolveedu/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/evolveedu/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/notes/ai_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/notes/ai_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/quizzes/ai_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/quizzes/ai_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/roadmaps/ai_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/roadmaps/ai_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/tutor/ai_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/tutor/ai_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/tutor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/tutor/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/backend/tutor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/backend/tutor/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/components/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Features.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Features.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/src/pages/Signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evolveedu-ai/frontend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/evolveedu-ai/frontend/tailwind.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jayanth0075&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jayanth0075/EvolveED.ai&quot;,
+    &quot;accountId&quot;: &quot;46cbd5a8-45c8-4405-9367-79a03601882e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="32anYrc0U6um8qp9JRNhmveeBJj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.asgi.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/m9963/PycharmProjects/AI/FEFW-DJ-EvolveEd.ai&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PyCharm 2024.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-PY-243.23654.177" />
+        <option value="bundled-python-sdk-91d3a02ef49d-43b77aa2d136-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.23654.177" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3cc7e001-6743-45ba-82d5-bcd2b7a396a5" name="Changes" comment="" />
+      <created>1757667601535</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1757667601535</updated>
+      <workItem from="1757667602547" duration="2535000" />
+      <workItem from="1757678846914" duration="4902000" />
+      <workItem from="1757690725566" duration="10650000" />
+      <workItem from="1757742338555" duration="13758000" />
+      <workItem from="1757852636666" duration="18297000" />
+      <workItem from="1757906453059" duration="12415000" />
+      <workItem from="1757998192899" duration="4041000" />
+      <workItem from="1758087440599" duration="5278000" />
+      <workItem from="1758164139855" duration="2592000" />
+      <workItem from="1758182729008" duration="2712000" />
+      <workItem from="1758188179414" duration="230000" />
+      <workItem from="1758250860639" duration="799000" />
+      <workItem from="1758253278095" duration="288000" />
+      <workItem from="1758253679555" duration="1745000" />
+      <workItem from="1758256641501" duration="49000" />
+      <workItem from="1758308620271" duration="6000" />
+      <workItem from="1758346001505" duration="2440000" />
+      <workItem from="1758348649871" duration="1167000" />
+      <workItem from="1758449499044" duration="198000" />
+      <workItem from="1758454522555" duration="2776000" />
+      <workItem from="1758516658315" duration="4509000" />
+      <workItem from="1758522477828" duration="5339000" />
+      <workItem from="1758544154742" duration="97000" />
+      <workItem from="1758544651717" duration="458000" />
+      <workItem from="1758547066930" duration="41000" />
+    </task>
+    <task id="LOCAL-00001" summary="django files">
+      <option name="closed" value="true" />
+      <created>1757745343191</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757745343193</updated>
+    </task>
+    <task id="LOCAL-00002" summary="django files">
+      <option name="closed" value="true" />
+      <created>1757745784579</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757745784579</updated>
+    </task>
+    <task id="LOCAL-00003" summary="django files">
+      <option name="closed" value="true" />
+      <created>1757877321232</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1757877321233</updated>
+    </task>
+    <task id="LOCAL-00004" summary="django files">
+      <option name="closed" value="true" />
+      <created>1757877349094</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1757877349101</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
+    <MESSAGE value="django files" />
+    <option name="LAST_COMMIT_MESSAGE" value="django files" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/FEFW_DJ_EvolveEd_ai$asgi.coverage" NAME="asgi Coverage Results" MODIFIED="1758459375815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/evolveedu-ai/backend/evolveedu" />
+  </component>
+</project>
