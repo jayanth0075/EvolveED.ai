@@ -14,16 +14,35 @@ API.interceptors.request.use(config => {
   return config;
 });
 
-// Response interceptor for error handling
+// Response interceptor for error handling with detailed logging
 API.interceptors.response.use(
-  response => response,
+  response => {
+    console.log('API Response:', response.config.url, response.status);
+    return response;
+  },
   error => {
+    // Log error details for debugging
+    console.error('API Error:', {
+      url: error.config?.url,
+      status: error.response?.status,
+      message: error.message,
+      data: error.response?.data
+    });
+
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
       window.location.href = '/login';
     }
 
-    const message = error.response?.data?.message || error.message || 'Something went wrong';
+    if (error.response?.status === 403) {
+      toast.error('You do not have permission to perform this action.');
+    }
+
+    if (error.response?.status === 500) {
+      toast.error('Server error. Please try again later.');
+    }
+
+    const message = error.response?.data?.message || error.response?.data?.detail || error.message || 'Something went wrong';
     toast.error(message);
 
     return Promise.reject(error);
