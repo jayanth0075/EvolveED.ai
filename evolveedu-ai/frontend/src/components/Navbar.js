@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   User,
@@ -181,3 +182,6 @@ export default function Navbar() {
     </>
   );
 }
+
+Navbar.propTypes = {};
+
