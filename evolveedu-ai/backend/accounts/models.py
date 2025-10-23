@@ -50,10 +50,12 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
     def __str__(self):
+        """Return the email address of the user."""
         return self.email
 
 
 class UserProgress(models.Model):
+    """Model to track user learning progress and achievements."""
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='progress')
     total_study_time = models.IntegerField(default=0)  # in minutes
     completed_roadmaps = models.JSONField(default=list)
@@ -63,4 +65,5 @@ class UserProgress(models.Model):
     last_activity = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        """Return the user progress representation."""
         return f"{self.user.email} - Progress"
